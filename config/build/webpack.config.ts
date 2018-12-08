@@ -18,6 +18,10 @@ const config: Configuration = {
         options: babelOptions,
         test: /\.tsx?$/,
       },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: ['file-loader'],
+      },
     ],
   },
   output: {
