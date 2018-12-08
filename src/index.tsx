@@ -1,6 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const App = <h1>Hello World!</h1>;
+import Dashboard from './components/Dashboard';
 
-ReactDOM.render(App, document.getElementById('root'));
+ReactDOM.render(<Dashboard />, document.getElementById('root'));
+
+if (module.hot) {
+  module.hot.accept('./components/Dashboard', () => {
+    ReactDOM.render(<Dashboard />, document.getElementById('root'));
+  });
+}
