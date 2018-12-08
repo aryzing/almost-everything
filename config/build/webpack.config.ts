@@ -1,35 +1,37 @@
-import { Configuration } from 'webpack';
-import path from 'path';
-import babelOptions from './.babelrc';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import path from 'path';
+import webpack, { Configuration } from 'webpack';
+
+import babelOptions from './.babelrc';
 
 const mode =
   process.env.NODE_ENV === 'production' ? 'production' : 'development';
 
 const config: Configuration = {
-  mode,
   entry: path.resolve(process.cwd(), 'src', ''),
-  output: {
-    path: path.resolve(process.cwd(), 'dist'),
-  },
+  mode,
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
         include: path.resolve(process.cwd(), 'src'),
         loader: 'babel-loader',
         options: babelOptions,
+        test: /\.tsx?$/,
       },
     ],
   },
-  resolve: {
-    extensions: ['.ts', '.tsx', '.wasm', '.mjs', '.js', '.json'],
+  output: {
+    path: path.resolve(process.cwd(), 'dist'),
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(process.cwd(), 'config', 'build', 'template.html'),
     }),
+    new webpack.HotModuleReplacementPlugin(),
   ],
+  resolve: {
+    extensions: ['.ts', '.tsx', '.wasm', '.mjs', '.js', '.json'],
+  },
 };
 
 export default config;
