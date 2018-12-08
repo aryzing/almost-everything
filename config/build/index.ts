@@ -1,3 +1,4 @@
+/* tslint:disable:no-console */
 import webpack from 'webpack';
 import webpackDevServer from 'webpack-dev-server';
 import config from './webpack.config';
@@ -12,7 +13,7 @@ if (process.env.NODE_ENV !== 'production') {
   };
   const server = new webpackDevServer(compiler, devServerOptions);
 
-  server.listen(8080, '127.0.0.1', () => {
+  server.listen(8080, '0.0.0.0', () => {
     console.log('Starting server on http://localhost:8080');
   });
 } else {
