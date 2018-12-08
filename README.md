@@ -34,6 +34,10 @@ Prettier is configured with
 - `singleQuote=true` to for quicker visual differentiation between JS strings and JSX html attributes.
 - `trailingComma=all` to avoid lines showing up as modified when new object properties are added.
 
+# Tests
+
+Using Jest for testing. Tests are writtin in TS, to we're using the `ts-jest` preset. Failing tests prevent pushing.
+
 # Commit hooks
 
-Using husky to lint and format files before commit.
+Using husky to lint and format files before commit. Failing tests prevent pushing.
