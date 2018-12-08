@@ -7,7 +7,10 @@
     "build": "NODE_ENV=production node config/build",
     "build-builder": "tsc -p config/build",
     "prerun-builder": "npm run build-builder",
-    "run-builder": "node config/build"
+    "run-builder": "node config/build",
+    "lint": "tslint --fix -c config/lintingAndFormatting/tslint.json \"src/**/*.ts?(x)\"",
+    "format": "prettier --write --loglevel=warn --config config/lintingAndFormatting/.prettierrc \"src/**/*.ts?(x)\"",
+    "lintAndFormat": "npm run lint && npm run format"
   },
   "repository": {
     "type": "git",
@@ -35,6 +38,9 @@
     "@types/webpack-dev-server": "^3.1.1",
     "babel-loader": "^8.0.4",
     "html-webpack-plugin": "^3.2.0",
+    "prettier": "^1.15.3",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.17.0",
     "typescript": "^3.2.2",
     "webpack": "^4.27.1",
     "webpack-dev-server": "^3.1.10"

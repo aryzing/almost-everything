@@ -17,3 +17,19 @@ Webpack files use TypeScript, and are transpiled with `build-builder`. All check
 - `build-builder`: transpiles Webpack files
 - `prerun-builder`: ensures Webpack config has been transpiled to JS
 - `run-builder`: builds the app and runs WDS
+- `lint`: lints (and fixes) using tslint
+- `format`: formats (and fixes) using prettier
+- `lintAndFormat`: linting and formatting in one command
+
+# Linting and formatting
+
+## tslint
+
+Using recommended settings with prettier formatting exclusion rules.
+
+## prettier
+
+Prettier is configured with
+
+- `singleQuote=true` to for quicker visual differentiation between JS strings and JSX html attributes.
+- `trailingComma=all` to avoid lines showing up as modified when new object properties are added.
