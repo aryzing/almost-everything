@@ -33,3 +33,7 @@ Prettier is configured with
 
 - `singleQuote=true` to for quicker visual differentiation between JS strings and JSX html attributes.
 - `trailingComma=all` to avoid lines showing up as modified when new object properties are added.
+
+# Commit hooks
+
+Using husky to lint and format files before commit.
