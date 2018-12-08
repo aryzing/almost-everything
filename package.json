@@ -1,0 +1,16 @@
+{
+  "name": "almost-everything",
+  "version": "0.0.1",
+  "description": "App to help with the hiring and onboarding of crew personnel.",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aryzing/almost-everything.git"
+  },
+  "author": "Eduard Bardají Puig <ebardaji@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aryzing/almost-everything/issues"
+  },
+  "homepage": "https://github.com/aryzing/almost-everything#readme"
+}
