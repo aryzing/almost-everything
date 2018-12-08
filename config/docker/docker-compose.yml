@@ -1,0 +1,18 @@
+version: '3.7'
+services:
+  app-wds:
+    build:
+      context: ../..
+      dockerfile: config/docker/Dockerfile-dev
+    image: app-wds:latest
+    container_name: app-wds
+    volumes:
+      - ../..:/usr/src/app
+    ports:
+      - 8080:8080
+    command: npm run run-builder
+    networks:
+      - anccre-network
+networks:
+  anccre-network:
+    name: anccre-network

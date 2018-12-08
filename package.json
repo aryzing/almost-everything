@@ -5,6 +5,7 @@
   "scripts": {
     "prebuild": "npm run build-builder",
     "build": "NODE_ENV=production node config/build",
+    "dev": "docker-compose -p almost-everything -f config/docker/docker-compose.yml up",
     "build-builder": "tsc -p config/build",
     "prerun-builder": "npm run build-builder",
     "run-builder": "node config/build",

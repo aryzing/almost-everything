@@ -2,6 +2,13 @@
 
 App to help with the hiring and onboarding of crew personnel.
 
+# Key dependencies
+
+Recent versions of
+
+- docker and docker-compose
+- node and npm
+
 # How Webpack is used
 
 This project uses WDS to serve the application assets during development. A productiong bundle can also be generated using the `build` script, however, a production server has not been implemented and is considered outside the scope of this assignment.
@@ -41,3 +48,7 @@ Using Jest for testing. Tests are writtin in TS, to we're using the `ts-jest` pr
 # Commit hooks
 
 Using husky to lint and format files before commit. Failing tests prevent pushing.
+
+# Docker
+
+Docker is used to run the app while developing. This allows for a stable environment for all developers. The container's filesystem is mapped to the host machine for a seamless development experience.
