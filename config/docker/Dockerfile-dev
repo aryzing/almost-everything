@@ -1,0 +1,7 @@
+FROM node:latest
+
+VOLUME ["/usr/src/app"]
+
+WORKDIR /usr/src/app
+
+EXPOSE 8080

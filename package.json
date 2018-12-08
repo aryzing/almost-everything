@@ -1,0 +1,68 @@
+{
+  "name": "almost-everything",
+  "version": "0.0.1",
+  "description": "App to help with the hiring and onboarding of crew personnel.",
+  "scripts": {
+    "prebuild": "npm run build-builder",
+    "build": "NODE_ENV=production node config/build",
+    "dev": "docker-compose -p almost-everything -f config/docker/docker-compose.yml up",
+    "build-builder": "tsc -p config/build",
+    "prerun-builder": "npm run build-builder",
+    "run-builder": "node config/build",
+    "lint": "tslint --fix -c config/lintingAndFormatting/tslint.json \"src/**/*.ts?(x)\"",
+    "format": "prettier --write --loglevel=warn --config config/lintingAndFormatting/.prettierrc \"src/**/*.ts?(x)\"",
+    "lintAndFormat": "npm run lint && npm run format",
+    "test": "jest -c config/tests/jest.config.unit.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aryzing/almost-everything.git"
+  },
+  "author": "Eduard Bardají Puig <ebardaji@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aryzing/almost-everything/issues"
+  },
+  "homepage": "https://github.com/aryzing/almost-everything#readme",
+  "dependencies": {
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.1.0",
+    "@types/html-webpack-plugin": "^3.2.0",
+    "@types/jest": "^23.3.10",
+    "@types/react": "^16.7.13",
+    "@types/react-dom": "^16.0.11",
+    "@types/webpack": "^4.4.20",
+    "@types/webpack-dev-server": "^3.1.1",
+    "babel-loader": "^8.0.4",
+    "html-webpack-plugin": "^3.2.0",
+    "husky": "^1.2.0",
+    "jest": "^23.6.0",
+    "lint-staged": "^8.1.0",
+    "prettier": "^1.15.3",
+    "ts-jest": "^23.10.5",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.17.0",
+    "typescript": "^3.2.2",
+    "webpack": "^4.27.1",
+    "webpack-dev-server": "^3.1.10"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm test"
+    }
+  },
+  "lint-staged": {
+    "*.ts?(x)": [
+      "tslint --fix -c config/lintingAndFormatting/tslint.json",
+      "prettier --write --loglevel=warn --config config/lintingAndFormatting/.prettierrc",
+      "git add"
+    ]
+  }
+}
