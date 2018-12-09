@@ -27,6 +27,8 @@ Webpack files use TypeScript, and are transpiled with `build-builder`. All check
 - `lint`: lints (and fixes) using tslint
 - `format`: formats (and fixes) using prettier
 - `lintAndFormat`: linting and formatting in one command
+- `test`: run unit tests
+- `test:integration`: run integration tests
 
 # Linting and formatting
 
@@ -43,7 +45,7 @@ Prettier is configured with
 
 # Tests
 
-Using Jest for testing. Tests are writtin in TS, to we're using the `ts-jest` preset. Failing tests prevent pushing.
+Using Jest for testing. Tests are writtin in TS, to we're using the `ts-jest` preset. Failing unit tests prevent pushing. Integration tests have to be run on demand.
 
 # Commit hooks
 
