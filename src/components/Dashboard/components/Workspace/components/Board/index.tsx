@@ -23,7 +23,7 @@ export const Board = () => {
 
     operations();
   }, []);
-  const [filterChannel, setBroadcast] = useState(null);
+  const [filterChannel, setBroadcast] = useState({} as BroadcastChannel);
   useEffect(() => {
     const bc = new BroadcastChannel('filter_settings');
     bc.onmessage = e => dispatch(e.data);
@@ -34,13 +34,13 @@ export const Board = () => {
     return cleanup;
   }, []);
 
-  const handleCityChange = e => {
+  const handleCityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const action = { type: 'SET_FILTER_CITY', payload: e.target.value };
     filterChannel.postMessage(action);
     dispatch(action);
   };
 
-  const hanldeNameChange = e => {
+  const hanldeNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const action = { type: 'SET_FILTER_NAME', payload: e.target.value };
     filterChannel.postMessage(action);
     dispatch(action);

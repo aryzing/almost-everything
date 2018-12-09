@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { Dispatch } from 'react';
 import { Card } from './components/Card';
+import { IAction } from './services/reducer';
 import { ICandidate, THiringStage } from './types';
 
 export const stageFilter = (stage: THiringStage) => (candidate: ICandidate) =>
@@ -14,7 +15,7 @@ export const nameFilter = (name: string) => (candidate: ICandidate) =>
     .includes(name.toLowerCase());
 
 export const prevFactory = (
-  dispatch,
+  dispatch: Dispatch<IAction>,
   hiringStage: THiringStage,
   candidateId: string,
 ) => {
@@ -43,7 +44,7 @@ export const prevFactory = (
 };
 
 export const nextFactory = (
-  dispatch,
+  dispatch: Dispatch<IAction>,
   hiringStage: THiringStage,
   candidateId: string,
 ) => {
@@ -68,7 +69,9 @@ export const nextFactory = (
   }
 };
 
-export const cardMapper = dispatch => (candidate: ICandidate) => (
+export const cardMapper = (dispatch: Dispatch<IAction>) => (
+  candidate: ICandidate,
+) => (
   <Card
     key={candidate.id.value}
     name={candidate.name}
