@@ -133,12 +133,12 @@ export const Card = (props: ICardProps) => {
         <Phone href={`tel:${props.phone}`}>{props.phone}</Phone>
       </Data>
       <Arrows>
-        {props.handlePrev && (
+        {(props.handlePrev && (
           <ArrowLeft src={arrow} onClick={props.handlePrev} />
-        )}
-        {props.handleNext && (
+        )) || <div />}
+        {(props.handleNext && (
           <ArrowRight src={arrow} onClick={props.handleNext} />
-        )}
+        )) || <div />}
       </Arrows>
     </Container>
   );
