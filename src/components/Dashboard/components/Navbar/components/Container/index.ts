@@ -1,9 +1,18 @@
 import styled from 'styled-components';
 
 const Container = styled.div`
+  /* as flex parent */
   display: flex;
   justify-content: center;
-  height: 1.5rem;
+
+  /* as flex child */
+  flex: 0 1 auto;
+
+  /* remaining properties */
+  height: 3rem;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid black;
 `;
 
 export default Container;

@@ -1,12 +1,14 @@
 import React from 'react';
 
-import Navbar from './components/Navbar';
+import { Container } from './components/Container';
+import { Navbar } from './components/Navbar';
+import { Workspace } from './components/Workspace';
 
-export default function Dashboard() {
+export const Dashboard = () => {
   return (
-    <div>
+    <Container>
       <Navbar />
-      <h1>Almost Everything Dashboard</h1>
-    </div>
+      <Workspace />
+    </Container>
   );
-}
+};

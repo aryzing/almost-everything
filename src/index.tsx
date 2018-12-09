@@ -1,12 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Dashboard from './components/Dashboard';
+import { Dashboard } from './components/Dashboard';
+import { GlobalStyle } from './components/GlobalStyle';
 
-ReactDOM.render(<Dashboard />, document.getElementById('root'));
+const App = (
+  <>
+    <Dashboard />
+    <GlobalStyle />
+  </>
+);
+
+ReactDOM.render(App, document.getElementById('root'));
 
 if (module.hot) {
   module.hot.accept('./components/Dashboard', () => {
-    ReactDOM.render(<Dashboard />, document.getElementById('root'));
+    const HotApp = (
+      <>
+        <Dashboard />
+        <GlobalStyle />
+      </>
+    );
+    ReactDOM.render(HotApp, document.getElementById('root'));
   });
 }
