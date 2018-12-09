@@ -1,9 +1,44 @@
-import React from 'react';
+import React, { useEffect, useReducer } from 'react';
 
+import { IPerson } from '../../../../../../types/randomUser';
 import { Card } from './components/Card';
 import * as Table from './components/Table';
+import { getUsers } from './services/getUsers';
+
+type THiringStage = 'applied' | 'interviewing' | 'hired';
+
+interface ICandidate extends IPerson {
+  hiringStage: THiringStage;
+}
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'LOAD_DATA_FROM_API': {
+      return action.payload;
+    }
+    default: {
+      return state;
+    }
+  }
+};
 
 export const Board = () => {
+  const [state, dispatch]: [ICandidate[], any] = useReducer(reducer, []);
+  useEffect(() => {
+    const operations = async () => {
+      const data = await getUsers();
+      const candidates: ICandidate[] = data.map(candidate => {
+        const hiringStage: THiringStage = 'applied';
+        return {
+          ...candidate,
+          hiringStage,
+        };
+      });
+      dispatch({ type: 'LOAD_DATA_FROM_API', payload: candidates });
+    };
+
+    operations();
+  }, []);
   return (
     <Table.Container>
       <Table.HeaderApplied>Applied</Table.HeaderApplied>
@@ -11,12 +46,20 @@ export const Board = () => {
       <Table.HeaderHired>Hired</Table.HeaderHired>
 
       <Table.CandidatesApplied>
-        <Card
-          name={{ first: 'John', last: 'Doe' }}
-          image="https://randomuser.me/api/portraits/women/51.jpg"
-          phone="+4415264898"
-          email="john.doe@gmail.com"
-        />
+        {state
+          .filter(candidate => {
+            const applied: THiringStage = 'applied';
+            return candidate.hiringStage === applied;
+          })
+          .map(candidate => (
+            <Card
+              key={candidate.id.value}
+              name={candidate.name}
+              image={candidate.picture.medium}
+              phone={candidate.phone}
+              email={candidate.email}
+            />
+          ))}
       </Table.CandidatesApplied>
 
       <Table.CandidatesInterviewing>

@@ -52,3 +52,7 @@ Using husky to lint and format files before commit. Failing tests prevent pushin
 # Docker
 
 Docker is used to run the app while developing. This allows for a stable environment for all developers. The container's filesystem is mapped to the host machine for a seamless development experience.
+
+# TypeScript
+
+TypeScript is used to ensure robust data handling across the application. Primarily, it is used to ensure the right `props` are passed to components, and it's especially useful to access candidate data returned from the `randomuser.me` API.
