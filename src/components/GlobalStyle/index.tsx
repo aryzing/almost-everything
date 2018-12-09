@@ -6,13 +6,17 @@ export const GlobalStyle = createGlobalStyle`
       font-family: 'Montserrat', sans-serif;
       font-family: 'Raleway', sans-serif;
   */
-  @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600|Raleway');
+  @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600|Raleway:400,600');
 
   ${reset}
 
   /* other styles */
   html {
     font-size: 16px;
+    font-family: 'Raleway', sans-serif;
+  }
+  body {
+    line-height: 1.6;
   }
   html,
   body,

@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Card } from './components/Card';
 import * as Table from './components/Table';
 
 export const Board = () => {
@@ -9,7 +10,15 @@ export const Board = () => {
       <Table.HeaderInterviewing>Interviewing</Table.HeaderInterviewing>
       <Table.HeaderHired>Hired</Table.HeaderHired>
 
-      <Table.CandidatesApplied>candidates...</Table.CandidatesApplied>
+      <Table.CandidatesApplied>
+        <Card
+          name={{ first: 'John', last: 'Doe' }}
+          image="https://randomuser.me/api/portraits/women/51.jpg"
+          phone="+4415264898"
+          email="john.doe@gmail.com"
+        />
+      </Table.CandidatesApplied>
+
       <Table.CandidatesInterviewing>
         candidates int
       </Table.CandidatesInterviewing>

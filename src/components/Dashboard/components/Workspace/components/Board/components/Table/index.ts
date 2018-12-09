@@ -16,6 +16,7 @@ const HeaderCommon = styled.div`
   padding-bottom: 0.5rem;
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
+  font-size: 1.5rem;
 `;
 
 export const HeaderApplied = styled(HeaderCommon)`
