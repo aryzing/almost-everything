@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer } from 'react';
 
-import { Card } from './components/Card';
 import * as Table from './components/Table';
+import { cardMapper, cityFilter, nameFilter, stageFilter } from './helpers';
 import { getUsers } from './services/getUsers';
 import { initialState, IState, reducer } from './services/reducer';
 import { ICandidate, THiringStage } from './types';
@@ -23,28 +23,6 @@ export const Board = () => {
 
     operations();
   }, []);
-
-  const stageFilter = (stage: THiringStage) => (candidate: ICandidate) =>
-    candidate.hiringStage === stage;
-
-  const cityFilter = (city: string) => (candidate: ICandidate) =>
-    candidate.location.city.toLowerCase().includes(city.toLocaleLowerCase());
-
-  const nameFilter = (name: string) => (candidate: ICandidate) =>
-    (candidate.name.first + ' ' + candidate.name.last)
-      .toLocaleLowerCase()
-      .includes(name.toLowerCase());
-
-  const cardMapper = (candidate: ICandidate) => (
-    <Card
-      key={candidate.id.value}
-      name={candidate.name}
-      image={candidate.picture.medium}
-      phone={candidate.phone}
-      email={candidate.email}
-      city={candidate.location.city}
-    />
-  );
 
   const handleCityChange = e => {
     dispatch({ type: 'SET_FILTER_CITY', payload: e.target.value });
@@ -76,7 +54,7 @@ export const Board = () => {
             .filter(stageFilter('applied'))
             .filter(cityFilter(state.city))
             .filter(nameFilter(state.name))
-            .map(cardMapper)}
+            .map(cardMapper(dispatch))}
         </Table.CandidatesApplied>
 
         <Table.CandidatesInterviewing>
@@ -84,7 +62,7 @@ export const Board = () => {
             .filter(stageFilter('interviewing'))
             .filter(cityFilter(state.city))
             .filter(nameFilter(state.name))
-            .map(cardMapper)}
+            .map(cardMapper(dispatch))}
         </Table.CandidatesInterviewing>
 
         <Table.CandidatesHired>
@@ -92,7 +70,7 @@ export const Board = () => {
             .filter(stageFilter('hired'))
             .filter(cityFilter(state.city))
             .filter(nameFilter(state.name))
-            .map(cardMapper)}
+            .map(cardMapper(dispatch))}
         </Table.CandidatesHired>
       </Table.Container>
     </>
