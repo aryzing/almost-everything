@@ -1,26 +1,10 @@
 import React, { useEffect, useReducer } from 'react';
 
-import { IPerson } from '../../../../../../types/randomUser';
 import { Card } from './components/Card';
 import * as Table from './components/Table';
 import { getUsers } from './services/getUsers';
-
-type THiringStage = 'applied' | 'interviewing' | 'hired';
-
-interface ICandidate extends IPerson {
-  hiringStage: THiringStage;
-}
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'LOAD_DATA_FROM_API': {
-      return action.payload;
-    }
-    default: {
-      return state;
-    }
-  }
-};
+import { reducer } from './services/reducer';
+import { ICandidate, THiringStage } from './types';
 
 export const Board = () => {
   const [state, dispatch]: [ICandidate[], any] = useReducer(reducer, []);
@@ -39,6 +23,22 @@ export const Board = () => {
 
     operations();
   }, []);
+
+  const candidateCardsByStage = (stage: THiringStage) =>
+    state
+      .filter(candidate => {
+        return candidate.hiringStage === stage;
+      })
+      .map(candidate => (
+        <Card
+          key={candidate.id.value}
+          name={candidate.name}
+          image={candidate.picture.medium}
+          phone={candidate.phone}
+          email={candidate.email}
+        />
+      ));
+
   return (
     <Table.Container>
       <Table.HeaderApplied>Applied</Table.HeaderApplied>
@@ -46,26 +46,16 @@ export const Board = () => {
       <Table.HeaderHired>Hired</Table.HeaderHired>
 
       <Table.CandidatesApplied>
-        {state
-          .filter(candidate => {
-            const applied: THiringStage = 'applied';
-            return candidate.hiringStage === applied;
-          })
-          .map(candidate => (
-            <Card
-              key={candidate.id.value}
-              name={candidate.name}
-              image={candidate.picture.medium}
-              phone={candidate.phone}
-              email={candidate.email}
-            />
-          ))}
+        {candidateCardsByStage('applied')}
       </Table.CandidatesApplied>
 
       <Table.CandidatesInterviewing>
-        candidates int
+        {candidateCardsByStage('interviewing')}
       </Table.CandidatesInterviewing>
-      <Table.CandidatesHired>can hired</Table.CandidatesHired>
+
+      <Table.CandidatesHired>
+        {candidateCardsByStage('hired')}
+      </Table.CandidatesHired>
     </Table.Container>
   );
 };
