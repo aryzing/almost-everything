@@ -8,7 +8,6 @@ const Container = styled.div`
   border-radius: 4px;
   padding: 1rem;
   margin: 1rem;
-  height: 100px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
   display: grid;
@@ -52,7 +51,13 @@ const Img = styled.img`
 
 const Name = styled.div`
   font-weight: 600;
-  font-size: 1rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
+  overflow: hidden;
+`;
+
+const City = styled.div`
   white-space: nowrap;
   text-overflow: ellipsis;
   width: 100%;
@@ -106,6 +111,7 @@ export interface ICardProps {
   image: string;
   email: string;
   phone: string;
+  city: string;
 }
 
 const capitalizeFirstLetter = (name: string) =>
@@ -120,6 +126,7 @@ export const Card = (props: ICardProps) => {
           {capitalizeFirstLetter(props.name.first)}{' '}
           {capitalizeFirstLetter(props.name.last)}
         </Name>
+        <City>{capitalizeFirstLetter(props.city)}</City>
         <Email href={`mailto:${props.email}`}>{props.email}</Email>
         <Phone href={`tel:${props.phone}`}>{props.phone}</Phone>
       </Data>
