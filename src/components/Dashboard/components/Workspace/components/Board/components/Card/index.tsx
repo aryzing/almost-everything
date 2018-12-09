@@ -112,6 +112,8 @@ export interface ICardProps {
   email: string;
   phone: string;
   city: string;
+  handlePrev?: () => void;
+  handleNext?: () => void;
 }
 
 const capitalizeFirstLetter = (name: string) =>
@@ -131,8 +133,12 @@ export const Card = (props: ICardProps) => {
         <Phone href={`tel:${props.phone}`}>{props.phone}</Phone>
       </Data>
       <Arrows>
-        <ArrowLeft src={arrow} />
-        <ArrowRight src={arrow} />
+        {props.handlePrev && (
+          <ArrowLeft src={arrow} onClick={props.handlePrev} />
+        )}
+        {props.handleNext && (
+          <ArrowRight src={arrow} onClick={props.handleNext} />
+        )}
       </Arrows>
     </Container>
   );

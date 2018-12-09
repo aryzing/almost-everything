@@ -12,7 +12,7 @@ export const initialState = {
   name: '',
 };
 
-export const reducer = (state, action) => {
+export const reducer = (state: IState, action) => {
   switch (action.type) {
     case 'LOAD_CANDIDATES': {
       return {
@@ -31,6 +31,27 @@ export const reducer = (state, action) => {
         ...state,
         city: action.payload,
       };
+    }
+    case 'SET_CANDIDATE_STAGE': {
+      const foundCandidate = state.candidates.find(
+        candidate => candidate.id.value === action.payload.candidateId,
+      );
+      if (foundCandidate) {
+        const updatedCandidate: ICandidate = {
+          ...foundCandidate,
+          hiringStage: action.payload.hiringStage,
+        };
+        const updatedCandidates = [
+          updatedCandidate,
+          ...state.candidates.filter(
+            c => c.id.value !== action.payload.candidateId,
+          ),
+        ];
+        return {
+          ...state,
+          candidates: updatedCandidates,
+        };
+      }
     }
     default: {
       return state;
