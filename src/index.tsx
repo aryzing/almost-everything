@@ -1,6 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const App = <h1>Hello World!</h1>;
+import { Dashboard } from './components/Dashboard';
+import { GlobalStyle } from './components/GlobalStyle';
+
+const App = (
+  <>
+    <Dashboard />
+    <GlobalStyle />
+  </>
+);
 
 ReactDOM.render(App, document.getElementById('root'));
+
+if (module.hot) {
+  module.hot.accept('./components/Dashboard', () => {
+    const HotApp = (
+      <>
+        <Dashboard />
+        <GlobalStyle />
+      </>
+    );
+    ReactDOM.render(HotApp, document.getElementById('root'));
+  });
+}
