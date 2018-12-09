@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 
 import * as Table from './components/Table';
 import { cardMapper, cityFilter, nameFilter, stageFilter } from './helpers';
@@ -23,13 +23,27 @@ export const Board = () => {
 
     operations();
   }, []);
+  const [filterChannel, setBroadcast] = useState(null);
+  useEffect(() => {
+    const bc = new BroadcastChannel('filter_settings');
+    bc.onmessage = e => dispatch(e.data);
+    setBroadcast(bc);
+    const cleanup = () => {
+      return bc.close();
+    };
+    return cleanup;
+  }, []);
 
   const handleCityChange = e => {
-    dispatch({ type: 'SET_FILTER_CITY', payload: e.target.value });
+    const action = { type: 'SET_FILTER_CITY', payload: e.target.value };
+    filterChannel.postMessage(action);
+    dispatch(action);
   };
 
   const hanldeNameChange = e => {
-    dispatch({ type: 'SET_FILTER_NAME', payload: e.target.value });
+    const action = { type: 'SET_FILTER_NAME', payload: e.target.value };
+    filterChannel.postMessage(action);
+    dispatch(action);
   };
 
   return (
