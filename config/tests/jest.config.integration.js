@@ -6,4 +6,6 @@ module.exports = {
       tsConfig: '<rootDir>/config/tests/tsconfig.tests.json',
     },
   },
+  testMatch: ['**/?(*.)+(integration).ts?(x)'],
+  setupFiles: ['<rootDir>/config/tests/setupIntegrationFetch.js'],
 };

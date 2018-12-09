@@ -3,6 +3,7 @@ import React, { useEffect, useReducer } from 'react';
 import { IPerson } from '../../../../../../types/randomUser';
 import { Card } from './components/Card';
 import * as Table from './components/Table';
+import { getUsers } from './services/getUsers';
 
 type THiringStage = 'applied' | 'interviewing' | 'hired';
 
@@ -25,8 +26,7 @@ export const Board = () => {
   const [state, dispatch]: [ICandidate[], any] = useReducer(reducer, []);
   useEffect(() => {
     const operations = async () => {
-      const body = await fetch('https://randomuser.me/api/?nat=gb&results=5');
-      const data = (await body.json()).results as IPerson[];
+      const data = await getUsers();
       const candidates: ICandidate[] = data.map(candidate => {
         const hiringStage: THiringStage = 'applied';
         return {

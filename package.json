@@ -12,7 +12,8 @@
     "lint": "tslint --fix -c config/lintingAndFormatting/tslint.json \"src/**/*.ts?(x)\"",
     "format": "prettier --write --loglevel=warn --config config/lintingAndFormatting/.prettierrc \"src/**/*.ts?(x)\"",
     "lintAndFormat": "npm run lint && npm run format",
-    "test": "jest -c config/tests/jest.config.unit.js"
+    "test": "jest -c config/tests/jest.config.unit.js",
+    "test:integration": "jest -c config/tests/jest.config.integration.js"
   },
   "repository": {
     "type": "git",
@@ -48,6 +49,7 @@
     "html-webpack-plugin": "^3.2.0",
     "husky": "^1.2.0",
     "jest": "^23.6.0",
+    "jest-fetch-mock": "^2.0.1",
     "lint-staged": "^8.1.0",
     "prettier": "^1.15.3",
     "ts-jest": "^23.10.5",
