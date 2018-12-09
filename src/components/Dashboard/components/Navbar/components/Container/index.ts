@@ -6,7 +6,7 @@ const Container = styled.div`
   justify-content: center;
 
   /* as flex child */
-  flex: 0 1 auto;
+  flex: 0 0 auto;
 
   /* remaining properties */
   height: 3rem;
