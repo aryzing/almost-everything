@@ -16,7 +16,7 @@ const Container = styled.div`
     'photo data'
     'arrows arrows';
   grid-template-rows: auto auto;
-  grid-template-columns: 1fr 5fr;
+  grid-template-columns: 22% 78%;
 `;
 
 const Data = styled.div`
@@ -42,13 +42,30 @@ const Img = styled.img`
   justify-self: start;
 `;
 
+/*
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100px;
+    display: block;
+    overflow: hidden
+*/
+
 const Name = styled.div`
   font-weight: 600;
   font-size: 1rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
+  overflow: hidden;
 `;
 
 const Link = styled.a`
   text-decoration: none;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
+  overflow: hidden;
+
   color: black;
   :hover {
     text-decoration: underline;
@@ -91,13 +108,17 @@ export interface ICardProps {
   phone: string;
 }
 
+const capitalizeFirstLetter = (name: string) =>
+  name.charAt(0).toUpperCase() + name.slice(1);
+
 export const Card = (props: ICardProps) => {
   return (
     <Container>
       <Img src={props.image} />
       <Data>
         <Name>
-          {props.name.first} {props.name.last}
+          {capitalizeFirstLetter(props.name.first)}{' '}
+          {capitalizeFirstLetter(props.name.last)}
         </Name>
         <Email href={`mailto:${props.email}`}>{props.email}</Email>
         <Phone href={`tel:${props.phone}`}>{props.phone}</Phone>
