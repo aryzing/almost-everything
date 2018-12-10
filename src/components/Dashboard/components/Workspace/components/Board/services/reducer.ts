@@ -17,7 +17,7 @@ export const initialState = {
   name: '',
 };
 
-export const reducer = (state: IState, action: IAction) => {
+export const reducer = (state: IState = initialState, action: IAction) => {
   switch (action.type) {
     case 'LOAD_CANDIDATES': {
       return {
