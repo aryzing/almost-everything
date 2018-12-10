@@ -2,12 +2,24 @@
 
 App to help with the hiring and onboarding of crew personnel.
 
-# Key dependencies
+# Getting started
 
-Recent versions of
+We will need recent versions of
 
 - docker and docker-compose
 - node and npm
+
+To run the app use
+
+```sh
+npm run dev
+```
+
+The app will run on `localhost:8080`. Be sure to open a few tabs to check out filter state persistance between tabs.
+
+# Additional documentation
+
+DDD style documentation can be found in [app overview](./docs/app-overview.md).
 
 # How Webpack is used
 
@@ -27,6 +39,8 @@ Webpack files use TypeScript, and are transpiled with `build-builder`. All check
 - `lint`: lints (and fixes) using tslint
 - `format`: formats (and fixes) using prettier
 - `lintAndFormat`: linting and formatting in one command
+- `test`: run unit tests
+- `test:integration`: run integration tests
 
 # Linting and formatting
 
@@ -43,7 +57,7 @@ Prettier is configured with
 
 # Tests
 
-Using Jest for testing. Tests are writtin in TS, to we're using the `ts-jest` preset. Failing tests prevent pushing.
+Using Jest for testing. Tests are writtin in TS, to we're using the `ts-jest` preset. Failing unit tests prevent pushing. Integration tests have to be run on demand.
 
 # Commit hooks
 

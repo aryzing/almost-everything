@@ -13,7 +13,8 @@
     "format": "prettier --write --loglevel=warn --config config/lintingAndFormatting/.prettierrc \"src/**/*.ts?(x)\"",
     "lintAndFormat": "npm run lint && npm run format",
     "test": "jest -c config/tests/jest.config.unit.js",
-    "test:integration": "jest -c config/tests/jest.config.integration.js"
+    "test:integration": "jest -c config/tests/jest.config.integration.js",
+    "typecheck": "tsc -p src --noEmit"
   },
   "repository": {
     "type": "git",
@@ -43,6 +44,7 @@
     "@types/styled-components": "^4.1.2",
     "@types/webpack": "^4.4.20",
     "@types/webpack-dev-server": "^3.1.1",
+    "@types/webpack-env": "^1.13.6",
     "babel-loader": "^8.0.4",
     "babel-plugin-styled-components": "^1.9.2",
     "file-loader": "^2.0.0",
@@ -61,7 +63,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
+      "pre-commit": "lint-staged && npm run typecheck",
       "pre-push": "npm test"
     }
   },

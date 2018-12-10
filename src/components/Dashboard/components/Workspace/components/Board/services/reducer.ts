@@ -6,13 +6,18 @@ export interface IState {
   city: string;
 }
 
+export interface IAction {
+  type: string;
+  payload: any;
+}
+
 export const initialState = {
   candidates: [],
   city: '',
   name: '',
 };
 
-export const reducer = (state: IState, action) => {
+export const reducer = (state: IState = initialState, action: IAction) => {
   switch (action.type) {
     case 'LOAD_CANDIDATES': {
       return {
@@ -51,6 +56,8 @@ export const reducer = (state: IState, action) => {
           ...state,
           candidates: updatedCandidates,
         };
+      } else {
+        return state;
       }
     }
     default: {
