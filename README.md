@@ -2,12 +2,24 @@
 
 App to help with the hiring and onboarding of crew personnel.
 
-# Key dependencies
+# Getting started
 
-Recent versions of
+We will need recent versions of
 
 - docker and docker-compose
 - node and npm
+
+To run the app use
+
+```sh
+npm run dev
+```
+
+The app will run on `localhost:8080`. Be sure to open a few tabs to check out filter state persistance between tabs.
+
+# Additional documentation
+
+DDD style documentation can be found in [app overview](./docs/app-overview.md).
 
 # How Webpack is used
 
