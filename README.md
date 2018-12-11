@@ -15,7 +15,7 @@ To run the app use
 npm run dev
 ```
 
-The app will run on `localhost:8080`. Be sure to open a few tabs to check out filter state persistance between tabs.
+The app will run on `localhost:8080`. Be sure to open a few tabs to check out filter state persistence between tabs.
 
 # Additional documentation
 
@@ -23,7 +23,7 @@ DDD style documentation can be found in [app overview](./docs/app-overview.md).
 
 # How Webpack is used
 
-This project uses WDS to serve the application assets during development. A productiong bundle can also be generated using the `build` script, however, a production server has not been implemented and is considered outside the scope of this assignment.
+This project uses WDS to serve the application assets during development. A production bundle can also be generated using the `build` script, however, a production server has not been implemented and is considered outside the scope of this assignment.
 
 We're using Webpack's Node API for greater control.
 
@@ -57,7 +57,7 @@ Prettier is configured with
 
 # Tests
 
-Using Jest for testing. Tests are writtin in TS, to we're using the `ts-jest` preset. Failing unit tests prevent pushing. Integration tests have to be run on demand.
+Using Jest for testing. Tests are written in TS, to we're using the `ts-jest` preset. Failing unit tests prevent pushing. Integration tests have to be run on demand.
 
 # Commit hooks
 
@@ -65,7 +65,7 @@ Using husky to lint and format files before commit. Failing tests prevent pushin
 
 # Docker
 
-Docker is used to run the app while developing. This allows for a stable environment for all developers. The container's filesystem is mapped to the host machine for a seamless development experience.
+Docker is used to run the app while developing. This allows for a stable environment for all developers. The container's file system is mapped to the host machine for a seamless development experience.
 
 # TypeScript
 
