@@ -1,3 +1,4 @@
+import FaviconsWebpackPlugin from 'favicons-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
 import webpack, { Configuration } from 'webpack';
@@ -31,6 +32,9 @@ const config: Configuration = {
     new HtmlWebpackPlugin({
       template: path.resolve(process.cwd(), 'config', 'build', 'template.html'),
     }),
+    new FaviconsWebpackPlugin(
+      path.resolve(process.cwd(), 'src', 'assets', 'logo.png'),
+    ),
     new webpack.HotModuleReplacementPlugin(),
   ],
   resolve: {
